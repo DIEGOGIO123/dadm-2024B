@@ -1,27 +1,29 @@
 <script setup>
 import { ref } from 'vue';
-const header = ref('App lista de compras');
-const items = ref([
-  {id: '0', label:'10 bolillos'},
-  {id: '1', label:'1 lata de frijoles'},
-  {id: '2', label:'1 chela'},
-  {id: '3', label:'1 nutella'}
+//Modelo
+const header = ref  ('App lista de compras');
+const items = ref ([
+{id: '0', label: '10 bolillos'},  
+{id: '1', label:'1 lata frijoles'},
+{id: '2', label: '1 Chelas'},
+{id: '3', label: '1 nutella'},
 ]);
+const newItem = ref('')
 </script>
 
 <template>
-<h1>
-    <i class="material-icons shopping-cart-icon"> local_mall </i>
-  {{ header }}
-</h1>
-<ul>
-    <li v-for="item in items" :key="item.id"> 🛍️{{ item.label }} </li>
-    
-  </ul>
+<h1> 
+    <i class="material-icons shopping-cart-icon"> local_mall</i>
+    {{ header }} 
+    </h1>
+    <input v-model.lazy="newItem" type="text" placeholder="Agregar Articulo">{{ newItem }}
+    <ul>
+        <li v-for= "({id, label}, i) in items" :key = "id">{{i+1}} {{ i%2==0?'🎇': '👜'}} {{ label }} </li>
+    </ul>
 </template>
 
 <style scoped>
 .shopping-cart-icon {
-    font-size: 2rem;
+font-size: 2rem;
 }
 </style>

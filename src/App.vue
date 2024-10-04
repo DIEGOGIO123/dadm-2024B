@@ -47,6 +47,9 @@ const activateEdition =(activate) => {
   Agregar Articulo
 </button>
   </div>
+  <!--Colocando un hyperlink-->
+  <a v-bind:href="'https://' + newItem" target="_blank">{{ newItem == "" ? "🔗 Link": newItem }}</a>
+  {{ 'https://' + newItem }}
   <form 
    class="add-item form"
    v-if="editing"

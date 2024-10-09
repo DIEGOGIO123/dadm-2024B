@@ -6,10 +6,10 @@ const header = ref('App lista de compras');
 
 // ---items----
 const items = ref([
-  { id: '0', label: '10 bolillos' },
-  { id: '1', label: '1 chela' },
-  { id: '2', label: 'leche' },
-  { id: '3', label: '1 nutella' }
+  { id: '0', label: '10 bolillos', purchased: false, priority: true },
+  { id: '1', label: '1 chela', purchased: true, priority: true},
+  { id: '2', label: 'leche', purchased: false, priority: false },
+  { id: '3', label: '1 nutella', purchased: true, priority: true }
 ]);
 
 // Item-Method
@@ -58,8 +58,24 @@ const activeEdition = (activate) => {
       Salvar Articulo
     </button>
   </form>
+    <!--LISTA OBJETOS-->
   <ul>
-    <li v-for="item in items" :key="item.id"> 🛍 {{ item.label }} </li>
+    <li 
+    v-for="{label, id, purchased, priority} in items" 
+    :key="id"
+    class="amazing"
+    :class="{ strikeout: purchased, priority: priority, amazing: true}"> 
+    {{priority ? "🔥": "🛍️"}} {{ label }}
+   </li>
+  </ul>
+  <!--LISTA ARREGLOS-->
+  <ul>
+    <li 
+    v-for="{label, id, purchased, priority} in items" 
+    :key="id"
+    :class="[purchased ? 'strikeout': '', priority ? 'priority': '']"> 
+    {{priority ? "🔥": "🛍️"}} {{ label }}
+   </li>
   </ul>
   <p v-if="items.length === 0"> 🥀 NO HAY ELEMENTOS EN LA LISTA 🥀</p>
 </template>

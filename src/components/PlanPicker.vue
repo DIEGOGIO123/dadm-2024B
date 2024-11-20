@@ -19,9 +19,10 @@ selectedPlan.value = name;
    :key="plan"
     :name="plan"
     @select="selectPlan"
-    :select-plan="selectedPlan" />
+    :selected-plan="selectedPlan" />
+
 </div>
-<p> {{ selectedPlan }}</p>
+
 </template>
 
 <style scoped>
